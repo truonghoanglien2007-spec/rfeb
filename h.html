@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amazon</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+        
+body {
+background: #eaeded; font-size: 14px;
+    background: #eaeded;
+    font-size: 14px;
+}
+
+.header {
+    background: #131921;
+    color: white;
+    padding: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-btn {
+    background: #febd69;
+}
+
+
+.card-box a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    margin-top: -80px; 
+    position: relative;
+    z-index: 2;
+}
+
+.card-box {
+    background: white;
+    padding: 15px;
+    height: 100%;
+}
+
+.card-box img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.small-grid img {
+    height: 80px;
+}
+.search-box select {
+   border-radius: 9px;
+    border-right: none;
+}
+
+.search-box input {
+    border-radius: 0;
+}
+
+
+.link {
+    color: #007185;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+
+.menu span {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.form-select-sm {
+    background: transparent;
+    color: white;
+    border: none;
+}
+
+.form-select-sm option {
+    color: black;
+}
+
+.menu-content p:hover {
+    background: #f2f2f2;
+}
+.lang-select {
+    width: 55px;  
+    padding: 2px 4px;
+}
+.lang-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.lang-box img {
+    width: 20px;
+}
+
+
+
+.lang-menu div:hover {
+    background: #f2f2f2;
+}
+
+.lang-menu img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.lang-box:hover .lang-menu {
+    display: block;
+}
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+.product-row {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;  
+    background: white;
+    padding: 15px;
+}
+
+.product-card {
+    min-width: 200px;
+    flex-shrink: 0;
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+
+.nav-item-account {
+    position: relative;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+}
+
+.nav-text {
+    line-height: 1.2;
+    font-size: 13px;
+}
+
+.account-dropdown {
+   
+    position: absolute;
+    top: 100%; 
+    right: -50px;
+    width: 450px;
+    background-color: white;
+    color: #333;
+    border-radius: 3px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    padding: 20px;
+    z-index: 9999;
+    cursor: default;
+    border: 1px solid #ddd;
+}
+
+
+
+.dropdown-arrow {
+    position: absolute;
+    top: -10px;
+    right: 75px;
+    width: 0; 
+    height: 0; 
+    border-left: 120px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 10px solid white;
+       
+
+}
+
+.auth-section {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-signin {
+    background: #FFD814;
+    border: 1px solid #FCD200;
+    border-radius: 8px;
+    width: 200px;
+    padding: 6px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu-columns {
+    display: flex;
+    text-align: left;
+}
+
+.column {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.border-left {
+    border-left: 1px solid #eee;
+}
+
+.column h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.column a {
+    display: block;
+    color: #444;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 3px 0;
+}
+
+.column a:hover {
+    color: #e47911;
+    text-decoration: underline;
+}
+
+.title {
+    font-size: 14px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.rating {
+    color: orange;
+    font-size: 13px;
+}
+
+.rating span {
+    color: #007185;
+}
+
+.price {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.amazon-footer a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.amazon-footer a:hover {
+    text-decoration: underline;
+}
+
+.amazon-footer {
+    background-color: #232f3e;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.back-to-top {
+    background-color: #37475a;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 13px;
+    transition: background 0.3s;
+}
+
+.back-to-top:hover {
+    background-color: #485769;
+    text-decoration: none !important;
+}
+
+.footer-main-links .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    
+    padding: 40px 10px;
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #3a4553;
+}
+
+.footer-settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    gap: 50px;
+}
+
+.select-btn {
+    display: inline-block !important;
+    border: 1px solid #848688;
+    padding: 6px 10px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin: 0 5px;
+    color: #CCC;
+}
+
+
+.footer-directory {
+    background-color: #131a22;
+    padding: 90px ;
+}
+
+.directory-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    
+}
+
+.dir-item {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px; 
+}
+.dir-item .title {
+    color: #EEE;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.1; 
+}
+
+
+.dir-item .desc {
+    color: #999;
+    margin: 0;
+    line-height: 1.1; 
+}
+
+.dir-item:hover .desc {
+    text-decoration: underline;
+}
+
+.dir-item:hover .title {
+    text-decoration: underline;
+}
+
+.menu a {
+    color: white;            
+    text-decoration: none;     
+    margin-right: 15px;      
+    padding: 15px 20px;         
+    cursor: pointer;
+}
+
+.menu a:hover {
+    border: 2px solid white;  
+}
+
+
+.rating {
+    cursor: pointer;
+    font-size: 18px;
+    color: #ccc;
+}
+
+.rating .star {
+    transition: 0.2s;
+}
+
+.rating .star.active {
+    color: orange;
+}
+
+.rating .count {
+    font-size: 13px;
+    color: #007185;
+    margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box select {
+        width: 70px;
+    }
+
+    .search-box input {
+        font-size: 13px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .header > div:last-child {
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .card-box img {
+        height: auto;
+    }
+}
+@media (max-width: 768px) {
+    .banner {
+        height: 150px;
+        margin-top: 10px;
+    }
+
+    .container {
+        margin-top: -40px;
+    }
+}
+.menu {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.menu::-webkit-scrollbar {
+    display: none;
+}
+.product-row {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.product-card {
+    min-width: 150px;
+}
+
+.footer-directory .directory-grid + .directory-grid {
+    margin-top: 20px;
+}
+.nav-item-account.active .account-dropdown {
+    display: block;
+}
+.lang-box.active .lang-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.product-row {
+    -webkit-overflow-scrolling: touch;
+}
+@supports not (-webkit-mask-image: none) {
+    .banner img {
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+}
+.header {
+    flex-wrap: wrap;
+}
+.offcanvas-body p {
+    opacity: 0;
+    transform: translateX(-10px);
+   
+}
+.offcanvas-body h5 { animation-delay: 0.05s; }
+.offcanvas-body p:nth-child(n) { animation-delay: 0.1s; }
+
+.offcanvas {
+    transition: transform 0.35s ease-in-out !important;
+}
+.offcanvas.show .offcanvas-body > * {
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: slideInItem 0.35s ease forwards;
+}
+.offcanvas.show .offcanvas-body > *:nth-child(1) { 
+    animation-delay: 0.05s; 
+}
+.offcanvas.show .offcanvas-body > *:nth-child(2) {
+     animation-delay: 0.08s; 
+    }
+.offcanvas.show .offcanvas-body > *:nth-child(3) { 
+    animation-delay: 0.11s; 
+}
+.offcanvas.show .offcanvas-body > *:nth-child(4) { 
+    animation-delay: 0.14s; 
+}
+.offcanvas.show .offcanvas-body > *:nth-child(5) {
+     animation-delay: 0.17s; 
+    }
+
+@keyframes slideInItem {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .banner {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 0;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}
+.banner-custom {
+    height: 350px;
+    max-width: 1620px;
+    margin: auto;
+}
+.hover-bg:hover {
+    background-color: #37475a;
+}
+.banner-custom img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
+}
+.banner-wrapper {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+}
+
+.banner-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 0%,
+        #eaeded 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+.carousel-inner {
+    position: relative;
+    z-index: 1;
+}
+@media (max-width: 768px) {
+    .banner-custom {
+        height: 150px;
+    }
+}
+.zoom-img {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+.zoom-img:hover {
+    transform: scale(1.08); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 2;
+    position: relative;
+}
+#amazonBanner {
+    width: 100vw;
+    margin-left: calc(-50vw + 50% + 10px);
+}
+#amazonBanner .carousel-control-prev,
+#amazonBanner .carousel-control-next {
+    width: 5%; 
+}
+</style>
+</head>
+<body>
+
+
+<div class="header container-fluid d-flex align-items-center justify-content-between flex-wrap px-3">
+        <div class="d-flex align-items-center gap-3">
+        <div class="logo">Amazon</div>
+        <div style="font-size:12px; line-height:1;">
+            Deliver to<br>
+            <b>Vietnam</b>
+        </div>
+    </div>    
+  
+    <div class="search-box d-flex flex-grow-1 mx-3">
+        <select class="form-select" style="max-width:80px;">
+            <option>All</option>
+        </select>
+
+        <input class="form-control" placeholder="Search Amazon">
+
+        <button class="btn search-btn">🔍</button>
+    </div>
+<div class="d-flex align-items-center text-end">
+    <div class="d-flex align-items-center" style="gap:5px;">
+   <div class="dropdown">
+            <button class="btn btn-sm text-white d-flex align-items-center gap-1"
+                    data-bs-toggle="dropdown">
+                <img id="flag" src="images/download (3).png" width="20">
+                <span id="langText">EN</span>
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-end p-3" style="width:280px;">
+                <p class="fw-bold mb-2">Change language</p>
+
+                <div class="form-check">
+                    <input class="form-check-input lang-option" type="radio" name="lang"
+                           data-lang="EN" data-flag="images/download (3).png" checked>
+                     <label class="form-check-label">English - EN</label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input lang-option" type="radio" name="lang"
+           data-lang="ES"
+           data-flag="images/download (2).png">
+    <label class="form-check-label">español - ES</label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input lang-option" type="radio" name="lang"
+           data-lang="AR"
+           data-flag="images/download (4).png">
+    <label class="form-check-label">العربية - AR</label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input lang-option" type="radio" name="lang"
+           data-lang="DE"
+           data-flag="images/download (5).png">
+    <label class="form-check-label">Deutsch - DE</label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input lang-option" type="radio" name="lang"
+           data-lang="KO"
+           data-flag="images/download (6).png">
+    <label class="form-check-label">한국어 - KO</label>
+</div>
+        <hr>
+
+        <p class="fw-bold mb-1">Change currency</p>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span>$ - USD - US Dollar</span>
+            <a href="#" class="text-primary small">Change</a>
+        </div>
+     <hr>
+        <a href="#" class="text-primary small">Change country/region</a>
+
+            </div>
+        </div>
+
+<div class="dropdown">
+    <button class="btn text-white p-0 text-end"
+            data-bs-toggle="dropdown">
+        <div class="nav-text">
+            <span>Hello, sign in</span><br>
+            <b>Account & Lists <small>▼</small></b>
+        </div>
+    </button>
+
+    <div class="dropdown-menu dropdown-menu-end p-3" style="width:450px;">
+        
+        <div class="dropdown-arrow"></div>
+
+        <div class="text-center border-bottom pb-3 mb-3">
+            <button class="btn btn-warning w-75">Sign in</button>
+            <p class="mt-2 mb-0">
+                New customer? <a href="#">Start here.</a>
+            </p>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-6">
+                <h6><b>Your Lists</b></h6>
+                <a class="dropdown-item">Create a List</a>
+                <a class="dropdown-item">Find a List or Registry</a>
+            </div>
+
+            <div class="col-6 border-start">
+                <h6><b>Your Account</b></h6>
+                <a class="dropdown-item">Account</a>
+                <a class="dropdown-item">Orders</a>
+                <a class="dropdown-item">Recommendations</a>
+                <a class="dropdown-item">Browsing History</a>
+                <a class="dropdown-item">Watchlist</a>
+                <a class="dropdown-item">Video Purchases & Rentals</a>
+                <a class="dropdown-item">Kindle Unlimited</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <div style="font-size:12px; margin-left:15px;">
+        Returns <br>
+        <b>& Orders</b>
+    </div>
+
+    <div style="margin-left:15px;">
+        🛒 <b>Cart</b>
+    </div>
+
+</div> 
+</div>
+
+<nav class="navbar navbar-dark bg-dark px-2">
+
+  <button class="btn btn-dark"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#sideMenu">
+    ☰ All
+  </button>
+
+  <div class="d-flex flex-grow-1 ms-3 gap-2 overflow-auto">
+
+    <a class="nav-link text-white px-3 py-2 rounded hover-bg"
+       href="todaydeal.html">Today's Deals</a>
+
+    <a class="nav-link text-white px-3 py-2 rounded hover-bg"
+       href="GiftCards.html">Gift Cards</a>
+
+    <a class="nav-link text-white px-3 py-2 rounded hover-bg"
+       href="sell.html">Sell</a>
+
+    <a class="nav-link text-white px-3 py-2 rounded hover-bg"
+       href="Registry.html">Registry</a>
+
+    <a class="nav-link text-white px-3 py-2 rounded hover-bg"
+       href="Prime.html">Prime Video</a>
+
+    <a class="nav-link text-white px-3 py-2 rounded hover-bg"
+       href="Service.html">Customer Service</a>
+
+  </div>
+
+</nav>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu">
+    <div class="offcanvas-header bg-dark text-white">
+        <h5>Hello, sign in</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body">
+                <h5>Digital Content & Devices</h5>
+        <p>Prime Video</p>
+        <p>Amazon Music</p>
+        <p>Kindle E-readers & Books</p>
+        <p>Amazon Appstore</p>
+
+        <hr>
+
+        <h5>Shop by Department</h5>
+        <p>Electronics</p>
+        <p>Computers</p>
+        <p>Smart Home</p>
+        <p>Arts & Crafts</p>
+
+        <hr>
+
+        <h5>Programs & Features</h5>
+        <p>Gift Cards</p>
+        <p>Amazon Live</p>
+        <p>International Shopping</p>
+
+        <hr>
+
+        <h5>Help & Settings</h5>
+        <p>Your Account</p>
+        <p>English</p>
+        <p>United States</p>
+        <p>Customer Service</p>
+        <p>Sign in</p>
+    </div>
+
+</div>
+
+
+<div class="banner-wrapper position-relative w-100">
+    <div id="amazonBanner" class="carousel slide w-100" data-bs-ride="carousel">
+      <div class="carousel-inner banner-custom">
+            <div class="carousel-item active">
+                <img src="images/61Z5DaOEVeL._SX3000_.jpg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="images/619geyiQI5L._SX3000_.jpg" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="images/61Yx5-N155L._SX3000_.jpg" class="d-block w-100">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#amazonBanner" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-black rounded-circle"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#amazonBanner" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-black rounded-circle"></span>
+        </button>
+    </div>
+    <div class="banner-fade"></div>
+</div>
